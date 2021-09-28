@@ -1,5 +1,6 @@
 import React, { useState, Component } from "react";
 import Photo from "./Components/Photo.js";
+import "./App.css";
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -154,9 +155,13 @@ function App() {
 
   return (
     <div>
+        <h1>Spacestagram</h1>
+        <h3>Brought to you by NASA APOD API...</h3>
       <Photo date = {date}/>
-      <button onClick = {() => setDate(subDate(date))}>next</button>
-      <button onClick = {() => setDate(addDate(date))}>previous</button>
+      <div class="pagination">
+        <a onClick = {() => setDate(addDate(date))}>❮</a>
+        <a onClick = {() => setDate(subDate(date))}>❯</a>
+        </div>
       </div>
     );
 }

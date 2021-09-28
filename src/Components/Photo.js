@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Heart from "react-animated-heart";
 
+const api_key = `${process.env.REACT_APP_API_KEY}`
+
 export default function Photo({ date }) {
 
     const [photoData, setPhotoData] = useState(null);
@@ -12,7 +14,7 @@ export default function Photo({ date }) {
     
         async function fetchPhoto() {
           const res = await fetch(
-            `https://api.nasa.gov/planetary/apod?date=${date}&api_key=iTqzcLJSjAYrBEIUHVc8BTRYeimGYTdhYfc4gCyq`
+            `https://api.nasa.gov/planetary/apod?date=${date}&api_key=${api_key}`
           );
           const data = await res.json();
           setPhotoData(data);
@@ -24,16 +26,13 @@ export default function Photo({ date }) {
 
     return (
         <div>
-        <div>
-            <h1>{photoData.title}</h1>
-            <p>{photoData.date}</p>
-            <p>{photoData.copyright}</p>
-            <p>{photoData.explanation}</p>
+        <div classname="APOD">
             {photoData.media_type === "image" ? (
                 <img
                     src={photoData.url}
                     alt={photoData.title}
                     className="photo"
+                    width="480"
                 />
             ) : (
                 <iframe
@@ -44,8 +43,14 @@ export default function Photo({ date }) {
                     allow="encrypted-media"
                     allowFullScreen
                     className="photo"
+                    width="480"
+                    height="270"
                 />
             )}
+            <h3>{photoData.title}</h3>
+            <p>{photoData.date}</p>
+            <p>{photoData.copyright}</p>
+            <p>{photoData.explanation}</p>
         </div>
         <div className="Like">
             <Heart isClick={isLiked} onClick={() => setLike(!isLiked)} />
