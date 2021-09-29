@@ -1,0 +1,2 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap);body{font-family:"Roboto Mono",monospace;background-color:#575656;color:#fff}.pagination{display:inline-block;float:right}.pagination a{color:#fff;float:left;padding:8px 16px;text-decoration:none;transition:background-color .3s;border:1px solid #000}.pagination a.active{background-color:#4caf50;color:#fff;border:1px solid #4caf50}.pagination a:hover:not(.active){background-color:#000}
+/*# sourceMappingURL=main.2eabe6db.chunk.css.map */
